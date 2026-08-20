@@ -25,7 +25,8 @@ export const createAccountCommand = new Command('account')
         const errorData = await response.json() as any;
         console.error('FAILED! Friendbot responded with an error:', errorData.detail || errorData);
       }
-    } catch (error: any) {
-      console.error('Error creating account:', error.message || error);
+    } catch (error: unknown) {
+      const err = error as Error;
+      console.error('Error creating account:', err.message || err);
     }
   });

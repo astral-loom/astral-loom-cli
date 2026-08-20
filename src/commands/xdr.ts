@@ -10,7 +10,8 @@ export const decodeXdrCommand = new Command('xdr')
     try {
       const envelope = xdr.TransactionEnvelope.fromXDR(xdrString, 'base64');
       console.log(JSON.stringify(envelope, null, 2));
-    } catch (error: any) {
-      console.error('Failed to decode XDR as TransactionEnvelope:', error.message || error);
+    } catch (error: unknown) {
+      const err = error as Error;
+      console.error('Failed to decode XDR as TransactionEnvelope:', err.message || err);
     }
   });
