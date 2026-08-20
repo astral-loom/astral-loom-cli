@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { decodeXdrCommand } from '../xdr';
+import { decodeXdrCommand } from '../xdr.js';
 
 describe('XDR Command', () => {
   it('should have correct name', () => {
