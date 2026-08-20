@@ -22,7 +22,7 @@ export const createAccountCommand = new Command('account')
       if (response.ok) {
         console.log('SUCCESS! Account funded successfully.');
       } else {
-        const errorData = await response.json() as any;
+        const errorData = await response.json() as { detail?: string };
         console.error('FAILED! Friendbot responded with an error:', errorData.detail || errorData);
       }
     } catch (error: unknown) {
