@@ -3,6 +3,6 @@ import { decodeXdrCommand } from '../xdr';
 
 describe('XDR Command', () => {
   it('should have correct name', () => {
-    expect(decodeXdrCommand.name()).toBe('xdr');
+    expect(decodeXdrCommand.name()).toBe('decode');
   });
 });
