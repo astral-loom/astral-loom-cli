@@ -2,8 +2,10 @@ import { Command } from 'commander';
 import fetch from 'node-fetch';
 import { Keypair } from '@stellar/stellar-sdk';
 
-export const createAccountCommand = new Command('account')
-  .description('Manage Stellar accounts')
+export const accountCommand = new Command('account')
+  .description('Manage Stellar accounts');
+
+accountCommand
   .command('create')
   .description('Create and fund a new testnet account')
   .action(async () => {
