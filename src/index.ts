@@ -3,6 +3,7 @@
 import { Command } from 'commander';
 import { accountCommand } from './commands/account.js';
 import { xdrCommand } from './commands/xdr.js';
+import { balanceCommand } from './commands/balance.js';
 
 const program = new Command();
 
@@ -13,5 +14,6 @@ program
 
 program.addCommand(accountCommand);
 program.addCommand(xdrCommand);
+program.addCommand(balanceCommand);
 
 program.parse(process.argv);
