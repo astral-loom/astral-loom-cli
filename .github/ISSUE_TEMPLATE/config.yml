@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a question or discuss ideas
+    url: https://github.com/astral-loom/astral-loom-core/discussions
+    about: Please ask and answer questions here.
