@@ -43,7 +43,15 @@ loom xdr decode <xdrString>
 
 ---
 
+## 💡 Examples
+
+Check out the [examples/usage-walkthrough.md](examples/usage-walkthrough.md) for a complete terminal walkthrough showing real outputs of the CLI in action against the Stellar testnet.
+
+---
+
 ## 🤝 Community & Maintainers
+
+We are committed to fostering a welcoming environment. Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before participating. If you discover a vulnerability, please review our [Security Policy](SECURITY.md) for reporting instructions.
 
 Join the discussion and get support:
 * **Community Link**: [Stellar Developer Discord](https://discord.gg/5aprtMSyR)
