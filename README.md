@@ -73,10 +73,14 @@ flowchart TD
 
 ### 1. Installation
 
-Install globally using npm:
+Clone the repo and build locally:
 
 ```bash
-npm install -g astral-loom-cli
+git clone https://github.com/astral-loom/astral-loom-cli.git
+cd astral-loom-cli
+npm install
+npm run build
+npm link
 ```
 
 ### 2. Usage
