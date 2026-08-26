@@ -26,14 +26,11 @@ export const balanceCommand = new Command('balance')
       account.balances.forEach((balance) => {
         let assetCode = 'XLM';
         if (balance.asset_type !== 'native') {
-          // @ts-ignore
-          assetCode = balance.asset_code || 'UNKNOWN';
+          assetCode = ('asset_code' in balance ? balance.asset_code : undefined) || 'UNKNOWN';
         }
         
         let limit = 'Unlimited';
-        // @ts-ignore
-        if (balance.limit) {
-          // @ts-ignore
+        if ('limit' in balance && balance.limit) {
           limit = balance.limit;
         }
 
@@ -46,7 +43,8 @@ export const balanceCommand = new Command('balance')
 
       console.log(table.toString());
       
-    } catch (error: any) {
-      console.error('Error fetching balance:', error.response?.data?.detail || error.message || error);
+    } catch (error: unknown) {
+      const err = error instanceof Error ? error : new Error(String(error));
+      console.error('Error fetching balance:', err.message);
     }
   });

@@ -23,7 +23,7 @@ export const submitCommand = new Command('submit')
       const transaction = TransactionBuilder.fromXDR(xdr, networkPassphrase);
       
       // Submit the transaction
-      // @ts-ignore - submitTransaction accepts a Transaction or FeeBumpTransaction
+      // @ts-expect-error - submitTransaction accepts Transaction | FeeBumpTransaction
       const response = await server.submitTransaction(transaction);
       
       console.log('✅ Transaction submitted successfully!\n');
@@ -38,12 +38,16 @@ export const submitCommand = new Command('submit')
         
       console.log(`Explorer: ${explorerUrl}`);
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ Error submitting transaction:');
-      if (error.response?.data?.extras?.result_codes) {
-        console.error('Result Codes:', error.response.data.extras.result_codes);
+      const err = error instanceof Error ? error : new Error(String(error));
+      const response = (error as Record<string, unknown>)?.response as Record<string, unknown> | undefined;
+      const data = response?.data as Record<string, unknown> | undefined;
+      const extras = data?.extras as Record<string, unknown> | undefined;
+      if (extras?.result_codes) {
+        console.error('Result Codes:', extras.result_codes);
       } else {
-        console.error(error.response?.data?.detail || error.message || error);
+        console.error((data?.detail as string) || err.message);
       }
     }
   });

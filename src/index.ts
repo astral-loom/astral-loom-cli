@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { webcrypto } from 'crypto';
-if (!globalThis.crypto) globalThis.crypto = webcrypto as any;
+if (!globalThis.crypto) globalThis.crypto = webcrypto as Crypto;
 
 import { Command } from 'commander';
 import { accountCommand } from './commands/account.js';
