@@ -4,7 +4,7 @@ import { xdr } from '@stellar/stellar-sdk';
 export const xdrCommand = new Command('xdr')
   .description('Utilities for working with XDR');
 
-xdrCommand
+export const decodeXdrCommand = xdrCommand
   .command('decode')
   .description('Pretty-print an XDR string (TransactionEnvelope)')
   .argument('<xdrString>', 'Base64 encoded XDR string')
