@@ -4,6 +4,8 @@
   
   [![Build Status](https://github.com/astral-loom/astral-loom-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/astral-loom/astral-loom-cli/actions/workflows/ci.yml)
   [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+  
+  🌐 Website: https://astral-loom-site.vercel.app
 </div>
 
 ---
