@@ -8,6 +8,10 @@
   🌐 Website: https://astral-loom-site.vercel.app
 </div>
 
+## Demo
+
+![astral-loom-cli demo](./demo.gif)
+
 ---
 
 ## 📖 Overview
