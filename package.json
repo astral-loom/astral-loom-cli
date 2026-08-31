@@ -17,7 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@stellar/stellar-sdk": "^16.2.0",
+    "@stellar/stellar-sdk": "^17.0.1",
     "cli-table3": "^0.6.5",
     "commander": "^15.0.0",
     "node-fetch": "^3.3.2"
