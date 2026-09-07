@@ -4,6 +4,7 @@
   
   [![Build Status](https://github.com/astral-loom/astral-loom-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/astral-loom/astral-loom-cli/actions/workflows/ci.yml)
   [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+  [![Telegram](https://img.shields.io/badge/Telegram-Join%20Chat-2CA5E0?logo=telegram&logoColor=white)](https://t.me/+G91vPNmPa-diM2U8)
   
   🌐 Website: https://astral-loom-site.vercel.app
 </div>
@@ -115,6 +116,7 @@ We are committed to fostering a welcoming environment. Please read our [Code of 
 
 Join the discussion and get support:
 * **Community Link**: [Stellar Developer Discord](https://discord.gg/5aprtMSyR)
+* **Telegram**: [Join our Telegram group](https://t.me/+G91vPNmPa-diM2U8) to ask questions, share what you're building, or get help contributing.
 
 | Maintainer | Role |
 |------------|------|

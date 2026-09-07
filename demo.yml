@@ -1,0 +1,227 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: bash -l
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: /home/gamp/MAINTAINER/astral-loom-cli
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 185
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 43
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: Terminalizer
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 3182
+    content: "\e]0;gamp@CL1T5S5:~/MAINTAINER/astral-loom-cli\e\\\e]7;file://CL1T5S5/home/gamp/MAINTAINER/astral-loom-cli\e\\\e[?2004h(base) \e]0;gamp@CL1T5S5: ~/MAINTAINER/astral-loom-cli\a\e[01;32mgamp@CL1T5S5\e[00m:\e[01;34m~/MAINTAINER/astral-loom-cli\e[00m$ "
+  - delay: 3756
+    content: l
+  - delay: 132
+    content: l
+  - delay: 964
+    content: "\b\e[K"
+  - delay: 819
+    content: o
+  - delay: 132
+    content: o
+  - delay: 181
+    content: m
+  - delay: 232
+    content: ' '
+  - delay: 932
+    content: a
+  - delay: 179
+    content: c
+  - delay: 153
+    content: c
+  - delay: 1112
+    content: o
+  - delay: 582
+    content: u
+  - delay: 172
+    content: 'n'
+  - delay: 166
+    content: t
+  - delay: 181
+    content: ' '
+  - delay: 476
+    content: c
+  - delay: 194
+    content: r
+  - delay: 201
+    content: e
+  - delay: 241
+    content: a
+  - delay: 120
+    content: t
+  - delay: 952
+    content: e
+  - delay: 323
+    content: "\r\n\e[?2004l\r\e]133;C\e\\\r"
+  - delay: 443
+    content: "Generating new keypair...\r\n"
+  - delay: 64
+    content: "Public Key: GDES5HGC7ZCFTETMZ5A2KRJP7NGPV7URM4AGKZRUJXFAE3QYBCC3JNQY\r\nSecret Key: SCUPZE7QQRZVTZHXQHS2WDNGYFUEQHYWSVWBHNX3NBM5IX7JO5IX54G6\r\n\r\nFunding account on Testnet via Friendbot...\r\n"
+  - delay: 22740
+    content: "SUCCESS! Account funded successfully.\r\n"
+  - delay: 23
+    content: "\e]0;gamp@CL1T5S5:~/MAINTAINER/astral-loom-cli\e\\"
+  - delay: 8
+    content: "\e]7;file://CL1T5S5/home/gamp/MAINTAINER/astral-loom-cli\e\\\e[?2004h(base) \e]0;gamp@CL1T5S5: ~/MAINTAINER/astral-loom-cli\a\e[01;32mgamp@CL1T5S5\e[00m:\e[01;34m~/MAINTAINER/astral-loom-cli\e[00m$ "
+  - delay: 2469
+    content: "\e[7mGDES5HGC7ZCFTETMZ5A2KRJP7NGPV7URM4AGKZRUJXFAE3QYBCC3JNQY\e[27m\r\n\r"
+  - delay: 974
+    content: "\e[A\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[CGDES5HGC7ZCFTETMZ5A2KRJP7NGPV7URM4AGKZRUJXFAE3QYBCC3JNQY\r\n\r\e[A\r\n\e[?2004l\r\e]133;C\e\\\r"
+  - delay: 389
+    content: "GDES5HGC7ZCFTETMZ5A2KRJP7NGPV7URM4AGKZRUJXFAE3QYBCC3JNQY: command not found\r\n"
+  - delay: 26
+    content: "\e]0;gamp@CL1T5S5:~/MAINTAINER/astral-loom-cli\e\\\e]7;file://CL1T5S5/home/gamp/MAINTAINER/astral-loom-cli\e\\\e[?2004h(base) \e]0;gamp@CL1T5S5: ~/MAINTAINER/astral-loom-cli\a\e[01;32mgamp@CL1T5S5\e[00m:\e[01;34m~/MAINTAINER/astral-loom-cli\e[00m$ "
+  - delay: 5336
+    content: l
+  - delay: 214
+    content: o
+  - delay: 152
+    content: o
+  - delay: 208
+    content: m
+  - delay: 183
+    content: ' '
+  - delay: 532
+    content: b
+  - delay: 180
+    content: a
+  - delay: 343
+    content: l
+  - delay: 259
+    content: a
+  - delay: 156
+    content: 'n'
+  - delay: 396
+    content: c
+  - delay: 158
+    content: e
+  - delay: 220
+    content: ' '
+  - delay: 1318
+    content: "\e[7mGDES5HGC7ZCFTETMZ5A2KRJP7NGPV7URM4AGKZRUJXFAE3QYBCC3JNQY\e[27m\r\n\r"
+  - delay: 798
+    content: "\e[A\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[C\e[CGDES5HGC7ZCFTETMZ5A2KRJP7NGPV7URM4AGKZRUJXFAE3QYBCC3JNQY\r\n\r\e[A\r\n\e[?2004l\r\e]133;C\e\\\r"
+  - delay: 383
+    content: "Querying testnet for account: GDES5HGC7ZCFTETMZ5A2KRJP7NGPV7URM4AGKZRUJXFAE3QYBCC3JNQY\r\n\r\n"
+  - delay: 10543
+    content: "Error fetching balance: fetch failed\r\n"
+  - delay: 26
+    content: "\e]0;gamp@CL1T5S5:~/MAINTAINER/astral-loom-cli\e\\"
+  - delay: 8
+    content: "\e]7;file://CL1T5S5/home/gamp/MAINTAINER/astral-loom-cli\e\\\e[?2004h(base) \e]0;gamp@CL1T5S5: ~/MAINTAINER/astral-loom-cli\a\e[01;32mgamp@CL1T5S5\e[00m:\e[01;34m~/MAINTAINER/astral-loom-cli\e[00m$ "
+  - delay: 45075
+    content: loom balance GDES5HGC7ZCFTETMZ5A2KRJP7NGPV7URM4AGKZRUJXFAE3QYBCC3JNQY
+  - delay: 1056
+    content: "\r\n\e[?2004l\r\e]133;C\e\\\r"
+  - delay: 390
+    content: "Querying testnet for account: GDES5HGC7ZCFTETMZ5A2KRJP7NGPV7URM4AGKZRUJXFAE3QYBCC3JNQY\r\n\r\n"
+  - delay: 2778
+    content: "\e[90m┌────────────\e[39m\e[90m┬───────────────\e[39m\e[90m┬───────────┐\e[39m\r\n\e[90m│\e[39m\e[36m Asset Code \e[39m\e[90m│\e[39m\e[36m Balance       \e[39m\e[90m│\e[39m\e[36m Limit     \e[39m\e[90m│\e[39m\r\n\e[90m├────────────\e[39m\e[90m┼───────────────\e[39m\e[90m┼───────────┤\e[39m\r\n\e[90m│\e[39m XLM        \e[90m│\e[39m 10000.0000000 \e[90m│\e[39m Unlimited \e[90m│\e[39m\r\n\e[90m└────────────\e[39m\e[90m┴───────────────\e[39m\e[90m┴───────────┘\e[39m\r\n"
+  - delay: 69
+    content: "\e]0;gamp@CL1T5S5:~/MAINTAINER/astral-loom-cli\e\\\e]7;file://CL1T5S5/home/gamp/MAINTAINER/astral-loom-cli\e\\\e[?2004h(base) \e]0;gamp@CL1T5S5: ~/MAINTAINER/astral-loom-cli\a\e[01;32mgamp@CL1T5S5\e[00m:\e[01;34m~/MAINTAINER/astral-loom-cli\e[00m$ "
+  - delay: 6370
+    content: "\e[?2004l\r\r\nlogout\r\n"
