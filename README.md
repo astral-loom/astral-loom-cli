@@ -130,4 +130,4 @@ We welcome contributions! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for 
 
 ### 🧑‍💻 Contributors
 
-[![Contributors](https://contrib.rocks/image?repo=astral-loom/astral-loom-cli)](https://github.com/astral-loom/astral-loom-cli/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=astral-loom/astral-loom-cli&v=2)](https://github.com/astral-loom/astral-loom-cli/graphs/contributors)
