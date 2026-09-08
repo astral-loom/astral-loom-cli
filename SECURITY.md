@@ -9,7 +9,7 @@ Currently, this project is in a pre-1.0 state. We only actively support the curr
 Please do not report security vulnerabilities through public GitHub issues. 
 Because this repository handles sensitive data like keypairs and signing, public disclosure could put users at risk.
 
-Instead, please report vulnerabilities privately via GitHub's "Report a vulnerability" security advisory feature on this repository.
+Instead, please report vulnerabilities privately via GitHub's "Report a vulnerability" security advisory feature on this repository. 
 
 ## Response Time
 
