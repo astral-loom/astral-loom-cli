@@ -118,9 +118,9 @@ Join the discussion and get support:
 * **Community Link**: [Stellar Developer Discord](https://discord.gg/5aprtMSyR)
 * **Telegram**: [Join our Telegram group](https://t.me/+G91vPNmPa-diM2U8) to ask questions, share what you're building, or get help contributing.
 
-| Maintainer | Role |
-|------------|------|
-| Temmy2026 | Core Developer |
+## Maintainers
+- [@Temmy2026](https://github.com/Temmy2026)
+- [@Olasunkanmi975](https://github.com/Olasunkanmi975)
 
 ---
 
