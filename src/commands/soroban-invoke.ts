@@ -29,7 +29,7 @@ export const sorobanInvokeCommand = new Command('soroban-invoke')
         try {
           const val = JSON.parse(argStr);
           return nativeToScVal(val);
-        } catch (e) {
+        } catch (_e) {
           // If not valid JSON, treat as string
           return nativeToScVal(argStr);
         }
@@ -63,7 +63,7 @@ export const sorobanInvokeCommand = new Command('soroban-invoke')
         console.error('❌ Simulation failed or incomplete');
       }
 
-    } catch (error: any) {
-      console.error('❌ Error:', error.message || String(error));
+    } catch (error: unknown) {
+      console.error('❌ Error:', (error as Error).message || String(error));
     }
   });
