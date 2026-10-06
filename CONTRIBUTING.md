@@ -1,6 +1,6 @@
 # Contributing to Astral Loom Kit
 
-We welcome contributions to Astral Loom Kit! Please follow these guidelines to help us maintain a high-quality codebase.
+We highly welcome contributions to Astral Loom Kit! Please follow these guidelines to help us maintain a high-quality codebase.
 
 ## Local Setup
 

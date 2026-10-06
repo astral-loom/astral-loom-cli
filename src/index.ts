@@ -7,6 +7,7 @@ import { accountCommand } from './commands/account.js';
 import { xdrCommand } from './commands/xdr.js';
 import { balanceCommand } from './commands/balance.js';
 import { submitCommand } from './commands/submit.js';
+import { sorobanInvokeCommand } from './commands/soroban-invoke.js';
 
 const program = new Command();
 
@@ -19,5 +20,6 @@ program.addCommand(accountCommand);
 program.addCommand(xdrCommand);
 program.addCommand(balanceCommand);
 program.addCommand(submitCommand);
+program.addCommand(sorobanInvokeCommand);
 
 program.parse(process.argv);

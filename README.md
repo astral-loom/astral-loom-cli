@@ -23,6 +23,9 @@
 
 1. **`account create`**: Create and fund testnet accounts easily.
 2. **`xdr decode`**: Decode and pretty-print transaction XDR envelopes (with built-in `BigInt` serialization support).
+3. **`balance <publicKey>`**: Query an account's live balance directly on the terminal.
+4. **`submit <xdr>`**: Submit signed transactions to the network.
+5. **`soroban-invoke <contractId> <method> [args...]`** (NEW!): Easily simulate Soroban smart contracts directly from your terminal.
 
 ### 🌍 Ecosystem Architecture
 
@@ -100,6 +103,12 @@ loom account create
 
 # Decode a base64 XDR string
 loom xdr decode <xdrString>
+
+# Check balance
+loom balance GA...
+
+# Simulate a Soroban smart contract
+loom soroban-invoke CC... increment 1
 ```
 
 ---
