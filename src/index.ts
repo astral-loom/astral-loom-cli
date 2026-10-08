@@ -8,6 +8,7 @@ import { xdrCommand } from './commands/xdr.js';
 import { balanceCommand } from './commands/balance.js';
 import { submitCommand } from './commands/submit.js';
 import { sorobanInvokeCommand } from './commands/soroban-invoke.js';
+import { configCommand } from './commands/config.js';
 
 const program = new Command();
 
@@ -21,5 +22,6 @@ program.addCommand(xdrCommand);
 program.addCommand(balanceCommand);
 program.addCommand(submitCommand);
 program.addCommand(sorobanInvokeCommand);
+program.addCommand(configCommand);
 
 program.parse(process.argv);

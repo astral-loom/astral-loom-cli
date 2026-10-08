@@ -1,27 +1,39 @@
 import { Command } from 'commander';
-import { rpc, Contract, Account, nativeToScVal } from '@stellar/stellar-sdk';
-import { Networks } from '@stellar/stellar-sdk';
+import { rpc, Contract, TransactionBuilder, Account, Networks, nativeToScVal } from '@stellar/stellar-sdk';
+
+// Account with the all-1s (max) sequence number. Soroban simulation only needs a
+// valid, well-formed source account, and the infinite sequence avoids forcing users
+// to look up their real sequence just to dry-run a call.
+const SIMULATION_SOURCE_ACCOUNT = 'GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN';
+
+const NETWORKS: Record<string, { rpcUrl: string; networkPassphrase: string }> = {
+  testnet: {
+    rpcUrl: 'https://soroban-testnet.stellar.org',
+    networkPassphrase: Networks.TESTNET,
+  },
+  mainnet: {
+    rpcUrl: 'https://mainnet.stellar.googleapis.com',
+    networkPassphrase: Networks.PUBLIC,
+  },
+};
 
 export const sorobanInvokeCommand = new Command('soroban-invoke')
   .description('Simulate a Soroban smart contract invocation')
   .argument('<contractId>', 'Contract ID')
   .argument('<method>', 'Method name')
   .argument('[args...]', 'Arguments as JSON strings')
-  .option('-n, --network <network>', 'Network to use (testnet, futurenet, mainnet)', 'testnet')
+  .option('-n, --network <network>', 'Network to use (testnet, mainnet)', 'testnet')
+  .option('-s, --source <address>', 'Source account address used for simulation', SIMULATION_SOURCE_ACCOUNT)
   .action(async (contractId, method, args, options) => {
     try {
-      let url = 'https://soroban-rpc.testnet.stellar.org';
-      let networkPassphrase = Networks.TESTNET;
-      
-      if (options.network === 'mainnet') {
-        url = 'https://soroban-rpc.mainnet.stellar.org';
-        networkPassphrase = Networks.PUBLIC;
-      } else if (options.network === 'futurenet') {
-        url = 'https://rpc-futurenet.stellar.org';
-        networkPassphrase = 'Test SDF Future Network ; Fall 2022';
+      const network = NETWORKS[options.network];
+      if (!network) {
+        console.error(`❌ Unknown network "${options.network}". Use: ${Object.keys(NETWORKS).join(', ')}`);
+        process.exitCode = 1;
+        return;
       }
 
-      const server = new rpc.Server(url);
+      const server = new rpc.Server(network.rpcUrl);
       const contract = new Contract(contractId);
       
       // Parse arguments
@@ -29,18 +41,18 @@ export const sorobanInvokeCommand = new Command('soroban-invoke')
         try {
           const val = JSON.parse(argStr);
           return nativeToScVal(val);
-        } catch (_e) {
+        } catch {
           // If not valid JSON, treat as string
           return nativeToScVal(argStr);
         }
       });
       
-      console.log(`Simulating ${method} on contract ${contractId}...`);
+      console.log(`Simulating ${method} on contract ${contractId} (${options.network})...`);
       
-      const account = new Account('GA6L7D63QJYYZBYCDBYQYJ4XN2O4S7JFYR53UKN673F6N5B2F5C6Y47X', '0');
-      const tx = new (require('@stellar/stellar-sdk').TransactionBuilder)(account, {
+      const account = new Account(options.source, '0');
+      const tx = new TransactionBuilder(account, {
         fee: '100',
-        networkPassphrase,
+        networkPassphrase: network.networkPassphrase,
       })
       .addOperation(contract.call(method, ...scValArgs))
       .setTimeout(30)

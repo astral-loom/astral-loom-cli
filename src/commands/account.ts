@@ -8,7 +8,8 @@ export const accountCommand = new Command('account')
 accountCommand
   .command('create')
   .description('Create and fund a new testnet account')
-  .action(async () => {
+  .option('--reveal-secret', 'Print the secret key instead of masking it')
+  .action(async (options) => {
     try {
       console.log('Generating new keypair...');
       const pair = Keypair.random();
@@ -16,7 +17,12 @@ accountCommand
       const secret = pair.secret();
 
       console.log(`Public Key: ${publicKey}`);
-      console.log(`Secret Key: ${secret}`);
+      if (options.revealSecret) {
+        console.log(`Secret Key: ${secret}`);
+        console.log('⚠️  Anyone with this secret key controls the account. Never share it or commit it.');
+      } else {
+        console.log('Secret Key: [hidden]  Pass --reveal-secret to print it.');
+      }
       console.log('\nFunding account on Testnet via Friendbot...');
 
       const response = await fetch(`https://friendbot.stellar.org?addr=${encodeURIComponent(publicKey)}`);
