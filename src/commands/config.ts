@@ -3,9 +3,9 @@ import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { homedir } from 'os';
 import { join } from 'path';
 
-const CONFIG_PATH = join(homedir(), '.loomrc.json');
+export const CONFIG_PATH = join(homedir(), '.loomrc.json');
 
-function readConfig(): Record<string, string> {
+export function readConfig(): Record<string, string> {
   if (!existsSync(CONFIG_PATH)) return {};
   try {
     return JSON.parse(readFileSync(CONFIG_PATH, 'utf-8'));
@@ -14,7 +14,7 @@ function readConfig(): Record<string, string> {
   }
 }
 
-function writeConfig(config: Record<string, string>): void {
+export function writeConfig(config: Record<string, string>): void {
   writeFileSync(CONFIG_PATH, JSON.stringify(config, null, 2));
 }
 

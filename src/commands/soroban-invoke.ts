@@ -1,5 +1,6 @@
 import { Command } from 'commander';
 import { rpc, Contract, TransactionBuilder, Account, Networks, nativeToScVal } from '@stellar/stellar-sdk';
+import { readConfig } from './config';
 
 // Account with the all-1s (max) sequence number. Soroban simulation only needs a
 // valid, well-formed source account, and the infinite sequence avoids forcing users
@@ -24,11 +25,13 @@ export const sorobanInvokeCommand = new Command('soroban-invoke')
   .argument('[args...]', 'Arguments as JSON strings')
   .option('-n, --network <network>', 'Network to use (testnet, mainnet)', 'testnet')
   .option('-s, --source <address>', 'Source account address used for simulation', SIMULATION_SOURCE_ACCOUNT)
-  .action(async (contractId, method, args, options) => {
+  .action(async (contractId, method, args, options, command) => {
     try {
-      const network = NETWORKS[options.network];
+      const isCliOption = command.getOptionValueSource('network') === 'cli';
+      const targetNetwork = isCliOption ? options.network : (readConfig().network || options.network || 'testnet');
+      const network = NETWORKS[targetNetwork];
       if (!network) {
-        console.error(`❌ Unknown network "${options.network}". Use: ${Object.keys(NETWORKS).join(', ')}`);
+        console.error(`❌ Unknown network "${targetNetwork}". Use: ${Object.keys(NETWORKS).join(', ')}`);
         process.exitCode = 1;
         return;
       }

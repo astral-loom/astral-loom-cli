@@ -1,20 +1,24 @@
 import { Command } from 'commander';
 import { Horizon } from '@stellar/stellar-sdk';
 import Table from 'cli-table3';
+import { readConfig } from './config';
 
 export const balanceCommand = new Command('balance')
   .description('Check account balances and trustlines')
   .argument('<publicKey>', 'Public key of the account')
   .option('-n, --network <network>', 'Network to use (testnet or mainnet)', 'testnet')
-  .action(async (publicKey, options) => {
+  .action(async (publicKey, options, command) => {
     try {
-      const serverUrl = options.network === 'mainnet' 
+      const isCliOption = command.getOptionValueSource('network') === 'cli';
+      const network = isCliOption ? options.network : (readConfig().network || options.network || 'testnet');
+
+      const serverUrl = network === 'mainnet' 
         ? 'https://horizon.stellar.org' 
         : 'https://horizon-testnet.stellar.org';
         
       const server = new Horizon.Server(serverUrl);
       
-      console.log(`Querying ${options.network} for account: ${publicKey}\n`);
+      console.log(`Querying ${network} for account: ${publicKey}\n`);
       
       const account = await server.accounts().accountId(publicKey).call();
       

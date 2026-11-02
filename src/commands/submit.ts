@@ -1,23 +1,27 @@
 import { Command } from 'commander';
 import { Horizon, TransactionBuilder, Networks } from '@stellar/stellar-sdk';
+import { readConfig } from './config';
 
 export const submitCommand = new Command('submit')
   .description('Submit a signed transaction envelope (XDR) to the network')
   .argument('<xdr>', 'Base64 encoded signed transaction XDR')
   .option('-n, --network <network>', 'Network to use (testnet or mainnet)', 'testnet')
-  .action(async (xdr, options) => {
+  .action(async (xdr, options, command) => {
     try {
-      const serverUrl = options.network === 'mainnet' 
+      const isCliOption = command.getOptionValueSource('network') === 'cli';
+      const network = isCliOption ? options.network : (readConfig().network || options.network || 'testnet');
+
+      const serverUrl = network === 'mainnet' 
         ? 'https://horizon.stellar.org' 
         : 'https://horizon-testnet.stellar.org';
         
-      const networkPassphrase = options.network === 'mainnet'
+      const networkPassphrase = network === 'mainnet'
         ? Networks.PUBLIC
         : Networks.TESTNET;
         
       const server = new Horizon.Server(serverUrl);
       
-      console.log(`Submitting transaction to ${options.network}...\n`);
+      console.log(`Submitting transaction to ${network}...\n`);
       
       // Parse the transaction from XDR
       const transaction = TransactionBuilder.fromXDR(xdr, networkPassphrase);
