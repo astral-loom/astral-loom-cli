@@ -30,3 +30,40 @@ jobs:
         name: coverage-report
         path: coverage/
         if-no-files-found: error
+
+  malware-and-security-scan:
+    name: Malware & Security Scan
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v7
+      with:
+        fetch-depth: 0
+
+    - name: Scan Repository for Malware (ClamAV)
+      run: |
+        sudo apt-get update -qq
+        sudo apt-get install -y -qq clamav clamav-daemon
+        sudo systemctl stop clamav-freshclam || true
+        sudo freshclam --quiet || true
+        if [ -d /var/lib/clamav ] && [ "$(ls -A /var/lib/clamav 2>/dev/null)" ]; then
+          clamscan -r --infected --exclude-dir="^./node_modules" --exclude-dir="^./.git" .
+        else
+          echo "ClamAV signature database unavailable, skipping file scan."
+        fi
+
+    - name: Run Trivy Vulnerability & Secret Scanner
+      uses: aquasecurity/trivy-action@v0.36.0
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        scanners: 'vuln,secret,misconfig'
+        severity: 'CRITICAL,HIGH'
+        exit-code: '0'
+
+    - name: Scan Dependencies for Critical Vulnerabilities
+      run: |
+        npm audit --audit-level=critical || true
+
+    - name: Dependency Review (PRs)
+      if: github.event_name == 'pull_request'
+      uses: actions/dependency-review-action@v4
