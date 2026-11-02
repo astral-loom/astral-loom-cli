@@ -2,8 +2,10 @@
   <h1>⚡ Astral Loom CLI</h1>
   <p><strong>A command-line tool for common Stellar development tasks.</strong></p>
   
-  [![Build Status](https://github.com/astral-loom/astral-loom-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/astral-loom/astral-loom-cli/actions/workflows/ci.yml)
-  [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+  [![CI](https://github.com/astral-loom/astral-loom-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/astral-loom/astral-loom-cli/actions/workflows/ci.yml)
+  [![CodeQL](https://github.com/astral-loom/astral-loom-cli/actions/workflows/codeql.yml/badge.svg)](https://github.com/astral-loom/astral-loom-cli/actions/workflows/codeql.yml)
+  [![Security Scan](https://img.shields.io/badge/Security-ClamAV%20%7C%20Trivy-brightgreen)](https://github.com/astral-loom/astral-loom-cli/actions/workflows/ci.yml)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
   [![Telegram](https://img.shields.io/badge/Telegram-Join%20Chat-2CA5E0?logo=telegram&logoColor=white)](https://t.me/+G91vPNmPa-diM2U8)
   
   🌐 Website: https://astral-loom-site.vercel.app
@@ -25,7 +27,8 @@
 2. **`xdr decode`**: Decode and pretty-print transaction XDR envelopes (with built-in `BigInt` serialization support).
 3. **`balance <publicKey>`**: Query an account's live balance directly on the terminal.
 4. **`submit <xdr>`**: Submit signed transactions to the network.
-5. **`soroban-invoke <contractId> <method> [args...]`** (NEW!): Easily simulate Soroban smart contracts directly from your terminal.
+5. **`config <get|set|list>`**: Manage default network preferences and CLI settings in `~/.loomrc.json`.
+6. **`soroban-invoke <contractId> <method> [args...]`** (NEW!): Easily simulate Soroban smart contracts directly from your terminal.
 
 ### 🌍 Ecosystem Architecture
 
@@ -83,7 +86,13 @@ flowchart TD
 
 ### 1. Installation
 
-Clone the repo and build locally:
+Install globally via npm:
+
+```bash
+npm install -g astral-loom-cli
+```
+
+Or clone the repository to build locally:
 
 ```bash
 git clone https://github.com/astral-loom/astral-loom-cli.git
@@ -98,16 +107,23 @@ npm link
 Use the `loom` command to access utilities:
 
 ```bash
+# Configure default network (mainnet, testnet, futurenet)
+loom config set network testnet
+loom config list
+
 # Create and fund a testnet account
 loom account create
 
 # Decode a base64 XDR string
 loom xdr decode <xdrString>
 
-# Check balance
+# Check account balance
 loom balance GA...
 
-# Simulate a Soroban smart contract
+# Submit a signed transaction envelope
+loom submit <xdrString>
+
+# Simulate a Soroban smart contract invocation
 loom soroban-invoke CC... increment 1
 ```
 
