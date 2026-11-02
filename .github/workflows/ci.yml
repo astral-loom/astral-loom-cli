@@ -17,4 +17,16 @@ jobs:
     - run: npm ci
     - run: npm run lint
     - run: npm run build
-    - run: npm test
+    # Runs the suite and fails the job if coverage falls below the thresholds in
+    # vitest.config.ts. See CONTRIBUTING.md for the current floor.
+    - name: Test with coverage gate
+      run: npm run test:coverage
+    # `if: always()` so a coverage failure still produces the report a reviewer
+    # needs to see which lines the diff left untested.
+    - name: Upload coverage report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-report
+        path: coverage/
+        if-no-files-found: error

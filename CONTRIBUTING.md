@@ -17,7 +17,7 @@ We highly welcome contributions to Astral Loom Kit! Please follow these guidelin
 
 3. **Run tests:**
    ```bash
-   npm run test
+   npm run test:coverage   # what CI runs, including the coverage gate
    ```
 
 4. **Build the project:**
@@ -31,6 +31,39 @@ We highly welcome contributions to Astral Loom Kit! Please follow these guidelin
 - **Formatting:** We use Prettier for code formatting. Run `npm run format` to automatically format your code.
 - **Linting:** We use ESLint. Ensure your code passes the linter by running `npm run lint`.
 - **Small functions:** Keep functions small, focused, and well-typed.
+
+## Test Coverage
+
+CI runs the suite as `vitest run --coverage` and **fails the build** if coverage drops
+below the thresholds configured in `vitest.config.ts`:
+
+| Metric       | Minimum |
+| ------------ | ------- |
+| Statements   | 95%     |
+| Branches     | 90%     |
+| Functions    | 95%     |
+| Lines        | 95%     |
+
+Run the same check locally before pushing:
+
+```bash
+npm run test:coverage   # prints the table and enforces the thresholds
+npm test                # runs the suite without the coverage gate
+```
+
+Coverage is measured over every file in `src/` (test files and `src/**/__tests__/`
+are excluded). On each CI run the `lcov` and HTML reports are uploaded as the
+**`coverage-report`** artifact — download it from the run summary to see exactly which
+lines a diff left untested.
+
+These numbers are a **ratchet**: when you add code and tests, raise the thresholds to
+match what the suite now achieves. Lowering one is a regression in test quality and
+needs an explicit maintainer decision, so open an issue first rather than doing it in a
+feature PR.
+
+Note that `@vitest/coverage-v8` must stay version-locked to `vitest` itself — running
+mismatched versions prints a warning and can silently mis-report coverage. Bump them
+together.
 
 ## Pull Request Guidelines
 
