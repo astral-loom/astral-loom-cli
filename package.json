@@ -1,11 +1,37 @@
 {
   "name": "astral-loom-cli",
   "version": "1.0.0",
-  "description": "",
+  "description": "Command-line developer tool for Stellar accounts, Soroban smart contracts, and transactions.",
   "main": "dist/index.js",
   "bin": {
     "loom": "dist/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astral-loom/astral-loom-cli.git"
+  },
+  "homepage": "https://github.com/astral-loom/astral-loom-cli#readme",
+  "bugs": {
+    "url": "https://github.com/astral-loom/astral-loom-cli/issues"
+  },
+  "keywords": [
+    "stellar",
+    "soroban",
+    "cli",
+    "smart-contracts",
+    "xdr",
+    "blockchain",
+    "developer-tools",
+    "typescript"
+  ],
+  "author": "Temmy2026",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "ts-node src/index.ts",
@@ -14,9 +40,6 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@stellar/stellar-sdk": "^17.1.0",
     "cli-table3": "^0.6.5",
